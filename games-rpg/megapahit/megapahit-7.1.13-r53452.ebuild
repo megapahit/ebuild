@@ -65,7 +65,7 @@ S="${WORKDIR}/viewer"
 CMAKE_BUILD_TYPE="Release"
 
 pkg_setup() {
-	export LL_BUILD="-O3 -std=c++20 -fPIC -DLL_LINUX=1"
+	export LL_BUILD="-fPIC -DLL_LINUX=1"
 	export revision="$(ver_cut 2- ${PR})"
 }
 
