@@ -22,6 +22,7 @@ SRC_URI="
 	http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/4724/14846/llphysicsextensions_stub-1.0.504712-linux64-504712.tar.bz2
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v0.21.tar.gz -> meshoptimizer-0.21.tar.gz
 	https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-linux64-8756084692.tar.zst
+	https://github.com/secondlife/3p-open-libndofdev/releases/download/v1.14-r2/open_libndofdev-0.14.8730039102-linux64-8730039102.tar.zst
 	https://github.com/secondlife/3p-openjpeg/releases/download/v2.5.0.ea12248/openjpeg-2.5.0.ea12248-linux64-ea12248.tar.zst
 	https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r1/openssl-1.1.1w-linux64-10329796904.tar.zst
 	https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-linux64-10710818432.tar.zst
@@ -92,7 +93,7 @@ src_configure() {
 		-DUSE_FMODSTUDIO:BOOL=OFF
 		-DENABLE_MEDIA_PLUGINS:BOOL=ON
 		-DLL_TESTS:BOOL=OFF
-		-DNDOF:BOOL=OFF
+		-DNDOF:BOOL=ON
 		-DROOT_PROJECT_NAME:STRING=Megapahit
 		-DVIEWER_CHANNEL:STRING=Megapahit
 		-DVIEWER_BINARY_NAME:STRING=${PN}
