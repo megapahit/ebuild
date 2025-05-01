@@ -53,7 +53,6 @@ DEPEND="
 	media-libs/nanosvg
 	media-video/pipewire
 	media-libs/libpulse
-	dev-libs/uriparser
 	dev-libs/xxhash
 "
 BDEPEND="
