@@ -23,7 +23,7 @@ SRC_URI="
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v0.21.tar.gz -> meshoptimizer-0.21.tar.gz
 	https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-linux64-8756084692.tar.zst
 	https://github.com/secondlife/3p-open-libndofdev/releases/download/v1.14-r2/open_libndofdev-0.14.8730039102-linux64-8730039102.tar.zst
-	https://github.com/secondlife/3p-openjpeg/releases/download/v2.5.0.ea12248/openjpeg-2.5.0.ea12248-linux64-ea12248.tar.zst
+	https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.3.tar.gz -> openjpeg-2.5.3.tar.gz
 	https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r1/openssl-1.1.1w-linux64-10329796904.tar.zst
 	https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-linux64-10710818432.tar.zst
 	https://github.com/secondlife/3p-three_js/releases/download/v0.132.2-5da28d9/threejs-0.132.2-common-8454371083.tar.zst
@@ -43,6 +43,7 @@ RDEPEND="
 	x11-libs/fltk
 	app-text/hunspell
 	net-libs/nghttp2
+	media-libs/openjpeg
 	media-libs/libsdl2[opengl]
 	media-video/vlc
 	sys-libs/zlib[minizip]
@@ -73,7 +74,7 @@ src_unpack() {
 	unpacker
 	cd ${WORKDIR}
 	mkdir -p viewer/indra_build/packages
-	mv 3p-colladadom-2.3-r8 meshoptimizer-0.21 viewer/indra_build/
+	mv 3p-colladadom-2.3-r8 meshoptimizer-0.21 openjpeg-2.5.3 viewer/indra_build/
 	mv LICENSES NOTICE VERSION autobuild-package.xml bin ca-bundle.crt dictionaries docs fonts include js llphysicsextensions lib meta mikktspace.txt resources xui viewer/indra_build/packages/
 }
 
@@ -87,7 +88,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DADDRESS_SIZE:STRING=64
-		-DUSESYSTEMLIBS:BOOL=ON
 		-DUSE_OPENAL:BOOL=ON
 		-DUSE_FMODSTUDIO:BOOL=OFF
 		-DENABLE_MEDIA_PLUGINS:BOOL=ON
