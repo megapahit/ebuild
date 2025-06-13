@@ -47,6 +47,7 @@ RDEPEND="
 	media-libs/libsdl2[opengl]
 	media-video/vlc
 	sys-libs/zlib[minizip]
+	app-accessibility/at-spi2-core
 "
 DEPEND="
 	${RDEPEND}
