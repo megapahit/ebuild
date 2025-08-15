@@ -34,7 +34,8 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
+IUSE="discord"
 
 RDEPEND="
 	media-libs/freealut
@@ -80,6 +81,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-discord_sdk.patch
+	eapply_user
 	cd ${WORKDIR}/viewer/indra_build/3p-colladadom-2.3-r8
 	eapply ${S}/patches/collada-dom-v2.3-r8.patch
 	cd ${S}/indra
@@ -91,6 +94,7 @@ src_configure() {
 		-DADDRESS_SIZE:STRING=64
 		-DUSE_OPENAL:BOOL=ON
 		-DUSE_FMODSTUDIO:BOOL=OFF
+		-DUSE_DISCORD:BOOL=$(usex discord)
 		-DENABLE_MEDIA_PLUGINS:BOOL=ON
 		-DLL_TESTS:BOOL=OFF
 		-DNDOF:BOOL=ON

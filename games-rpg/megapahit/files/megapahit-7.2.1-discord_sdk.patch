@@ -1,0 +1,11 @@
+--- viewer/indra/cmake/Discord.cmake.orig	2025-07-20 19:39:36.291295755 +0800
++++ viewer/indra/cmake/Discord.cmake	2025-07-20 19:39:46.854182818 +0800
+@@ -5,7 +5,7 @@
+ 
+ if (${PREBUILD_TRACKING_DIR}/sentinel_installed IS_NEWER_THAN ${PREBUILD_TRACKING_DIR}/discord_installed OR NOT ${discord_installed} EQUAL 0)
+     file(ARCHIVE_EXTRACT
+-        INPUT $ENV{HOME}/Downloads/DiscordSocialSdk-1.4.9649.zip
++        INPUT /var/cache/distfiles/DiscordSocialSdk-1.4.9649.zip
+         DESTINATION ${CMAKE_BINARY_DIR}
+         )
+     file(
