@@ -17,7 +17,7 @@ SRC_URI="
 	https://github.com/secondlife/3p-emoji-shortcodes/releases/download/v15.3.2-r1/emoji_shortcodes-15.3.2.10207138275-common-10207138275.tar.zst
 	https://github.com/secondlife/3p-glh_linear/releases/download/v1.0.1-dev4-984c397/glh_linear-1.0.1-dev4-common-984c397.tar.zst
 	https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-790015a/jpegencoderbasic-1.0-linux64-790015a.tar.zst
-	https://github.com/crow-misia/libwebrtc-bin/releases/download/114.5735.6.1/libwebrtc-linux-x64.tar.xz
+	https://github.com/crow-misia/libwebrtc-bin/releases/download/137.7151.3.1/libwebrtc-linux-x64.tar.xz
 	https://github.com/secondlife/llca/releases/download/v202407221723.0-a0fd5b9/llca-202407221423.0-common-10042698865.tar.zst
 	http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/4724/14846/llphysicsextensions_stub-1.0.504712-linux64-504712.tar.bz2
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v0.21.tar.gz -> meshoptimizer-0.21.tar.gz
