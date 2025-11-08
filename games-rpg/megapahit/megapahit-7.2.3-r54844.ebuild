@@ -9,7 +9,7 @@ DESCRIPTION="A fork of the Second Life viewer"
 HOMEPAGE="https://megapahit.net"
 SRC_URI="
 	https://megapahit.net/downloads/${PF}.tar.bz2
-	https://github.com/secondlife/3p-colladadom/archive/refs/tags/v2.3-r8.tar.gz -> colladadom-v2.3-r8.tar.gz
+	https://github.com/secondlife/3p-colladadom/archive/refs/tags/v2.3-r10.tar.gz -> colladadom-v2.3-r10.tar.gz
 	https://github.com/secondlife/3p-cubemap_to_eqr_js/releases/download/v1.1.0-cb8785a/cubemaptoequirectangular-1.1.0-linux64-cb8785a.tar.zst
 	https://github.com/secondlife/3p-curl/releases/download/v7.54.1-r3/curl-7.54.1-13259824618-linux64-13259824618.tar.zst
 	https://github.com/secondlife/3p-dictionaries/releases/download/v1-a01bb6c/dictionaries-1.a01bb6c-common-a01bb6c.tar.zst
@@ -76,15 +76,14 @@ src_unpack() {
 	unpacker
 	cd ${WORKDIR}
 	mkdir -p viewer/indra_build/packages
-	mv 3p-colladadom-2.3-r8 meshoptimizer-0.21 openjpeg-2.5.3 v-hacd-4.1.0 viewer/indra_build/
-	mv LICENSES NOTICE VERSION autobuild-package.xml bin ca-bundle.crt dictionaries docs fonts include js llphysicsextensions lib meta mikktspace.txt resources xui viewer/indra_build/packages/
+	mv 3p-colladadom-2.3-r10 meshoptimizer-0.21 openjpeg-2.5.3 v-hacd-4.1.0 viewer/indra_build/
+	mv LICENSES NOTICE VERSION autobuild-package.xml bin ca-bundle.crt dictionaries docs fonts include js lib meta mikktspace.txt resources xui viewer/indra_build/packages/
 }
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-webrtc.patch
 	eapply "${FILESDIR}"/${P}-discord_sdk.patch
 	eapply_user
-	cd ${WORKDIR}/viewer/indra_build/3p-colladadom-2.3-r8
-	eapply ${S}/patches/collada-dom-v2.3-r8.patch
 	cd ${S}/indra
 	cmake_src_prepare
 }
