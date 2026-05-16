@@ -46,6 +46,7 @@ RDEPEND="
 	net-libs/nghttp2
 	media-libs/openjpeg
 	media-libs/libsdl2[opengl]
+	media-sound/pulseaudio-daemon
 	media-video/vlc
 	sys-libs/zlib[minizip]
 	app-accessibility/at-spi2-core
@@ -54,7 +55,7 @@ DEPEND="
 	${RDEPEND}
 	media-libs/glm
 	media-libs/nanosvg
-	media-video/pipewire
+	media-video/pipewire[-sound-server]
 	media-libs/libpulse
 	dev-libs/xxhash
 "
