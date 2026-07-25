@@ -1,0 +1,16 @@
+--- viewer/indra/cmake/WebRTC.cmake.orig	2025-11-07 07:21:42.631406840 +0800
++++ viewer/indra/cmake/WebRTC.cmake	2025-11-07 07:21:52.737747450 +0800
+@@ -79,12 +79,7 @@
+     endif ()
+ endif ()
+ 
+-find_library(WEBRTC_LIBRARY
+-    NAMES
+-    webrtc
+-    PATHS "${ARCH_PREBUILT_DIRS_RELEASE}" REQUIRED NO_DEFAULT_PATH)
+-
+-target_link_libraries( ll::webrtc INTERFACE ${WEBRTC_LIBRARY} )
++target_link_libraries( ll::webrtc INTERFACE webrtc )
+ 
+ if (DARWIN)
+     if (CMAKE_OSX_ARCHITECTURES MATCHES x86_64)
