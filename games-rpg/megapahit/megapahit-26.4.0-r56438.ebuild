@@ -1,0 +1,109 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake unpacker
+
+DESCRIPTION="A fork of the Second Life viewer"
+HOMEPAGE="https://megapahit.net"
+SRC_URI="
+	https://megapahit.net/downloads/${PF}.tar.bz2
+	https://github.com/secondlife/3p-colladadom/archive/refs/tags/v2.3-r11.tar.gz -> colladadom-v2.3-r11.tar.gz
+	https://github.com/secondlife/3p-cubemap_to_eqr_js/releases/download/v1.1.0-cb8785a/cubemaptoequirectangular-1.1.0-linux64-cb8785a.tar.zst
+	https://github.com/secondlife/3p-curl/releases/download/v7.54.1-r4/curl-7.54.1-20982000504-linux64-20982000504.tar.zst
+	https://github.com/secondlife/3p-dictionaries/releases/download/v1-a01bb6c/dictionaries-1.a01bb6c-common-a01bb6c.tar.zst
+	https://github.com/secondlife/dullahan/releases/download/v1.26.0-CEF_139.0.40/dullahan-1.26.0.202510161627_139.0.40_g465474a_chromium-139.0.7258.139-linux64-18568015445.tar.zst
+	https://github.com/secondlife/3p-emoji-shortcodes/releases/download/v15.3.2-r1/emoji_shortcodes-15.3.2.10207138275-common-10207138275.tar.zst
+	https://github.com/secondlife/3p-google-fonts/releases/download/v1.0.0-r6/google_fonts-1.0.0.24469773244-common-24469773244.tar.zst
+	https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-790015a/jpegencoderbasic-1.0-linux64-790015a.tar.zst
+	https://github.com/secondlife/llca/releases/download/v202407221723.0-a0fd5b9/llca-202407221423.0-common-10042698865.tar.zst
+	https://github.com/secondlife/lsl-definitions/releases/download/v0.6.12/lsl_definitions-0.6.12-common-29281156609.tar.zst
+	https://github.com/zeux/meshoptimizer/archive/refs/tags/v1.2.tar.gz -> meshoptimizer-1.2.tar.gz
+	https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-linux64-8756084692.tar.zst
+	https://github.com/secondlife/3p-open-libndofdev/releases/download/v1.14-r7/open_libndofdev-0.14.19022717849-linux64-19022717849.tar.zst
+	https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r4/openssl-1.1.1w-r4-linux64-20981673556.tar.zst
+	https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-linux64-10710818432.tar.zst
+	https://github.com/secondlife/3p-three_js/releases/download/v0.132.2-5da28d9/threejs-0.132.2-common-8454371083.tar.zst
+	https://github.com/secondlife/3p-tinyexr/releases/download/v1.0.9-5e8947c/tinyexr-1.0.9-5e8947c-common-10475846787.tar.zst
+	https://github.com/secondlife/3p-tinygltf/releases/download/v2.9.3-r1/tinygltf-2.9.3-r1-common-10341018043.tar.zst
+	https://github.com/kmammou/v-hacd/archive/refs/tags/v4.1.0.tar.gz -> v-hacd-4.1.0.tar.gz
+	https://github.com/secondlife/3p-viewer-fonts/releases/download/v1.1.0-r2/viewer_fonts-1.0.0.25128287087-common-25128287087.tar.zst
+	https://github.com/secondlife/3p-webrtc-build/releases/download/m144.7559.06.19.hot-mic/webrtc-m144.7559.06.19.hot-mic.29761579711-linux64-29761579711.tar.zst
+	https://github.com/secondlife/3p-websocketpp/releases/download/v0.8.2-r3/websocketpp-0.8.2.24525603568-common-24525603568.tar.zst
+"
+
+LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="discord"
+
+RDEPEND="
+	media-libs/freealut
+	dev-libs/apr-util
+	dev-libs/boost[context]
+	app-text/hunspell
+	net-libs/nghttp2
+	media-libs/openjpeg
+	media-libs/libsdl3[opengl]
+	<media-video/vlc-4.0.0_pre20260625
+	sys-libs/zlib[minizip]
+	app-accessibility/at-spi2-core
+	gnome-extra/zenity
+"
+DEPEND="
+	${RDEPEND}
+	media-libs/glm
+	media-libs/nanosvg
+	media-video/pipewire
+	media-libs/libpulse
+	dev-libs/xxhash
+"
+BDEPEND="
+	dev-build/cmake
+	dev-util/patchelf
+	dev-util/pkgconf
+	app-arch/zstd
+"
+S="${WORKDIR}/viewer"
+
+CMAKE_BUILD_TYPE="Release"
+
+pkg_setup() {
+	export LL_BUILD_RELEASE="-O3 -std=c++20 -fPIC -DLL_RELEASE=1 -DLL_RELEASE_FOR_DOWNLOAD=1 -DNDEBUG -DLL_LINUX=1 -DPIC -DLL_OS_DRAGDROP_ENABLED=1"
+	export LL_BUILD_RELWITHDEBINFO="-O0 -g -std=c++20 -fPIC -DLL_RELEASE=1 -DLL_RELEASE_WITH_DEBUG_INFO=1 -DNDEBUG -DLL_LINUX=1 -DPIC -DLL_OS_DRAGDROP_ENABLED=1"
+	export revision="$(ver_cut 2- ${PR})"
+}
+
+src_unpack() {
+	unpacker
+	cd ${WORKDIR}
+	mkdir -p viewer/indra_build/packages
+	mv 3p-colladadom-2.3-r11 meshoptimizer-1.2 v-hacd-4.1.0 viewer/indra_build/
+	mv LICENSES autobuild-package.xml bin ca-bundle.crt dictionaries docs fonts include js lib lsl_definitions meta mikktspace.txt resources xui viewer/indra_build/packages/
+}
+
+src_prepare() {
+	eapply_user
+	cd ${S}/indra
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DADDRESS_SIZE:STRING=64
+		-DUSE_OPENAL:BOOL=ON
+		-DUSE_FMODSTUDIO:BOOL=OFF
+		-DUSE_DISCORD:BOOL=$(usex discord)
+		-DENABLE_MEDIA_PLUGINS:BOOL=ON
+		-DLL_TESTS:BOOL=OFF
+		-DNDOF:BOOL=ON
+		-DROOT_PROJECT_NAME:STRING=Megapahit
+		-DVIEWER_CHANNEL:STRING=Megapahit
+		-DVIEWER_BINARY_NAME:STRING=${PN}
+		-DBUILD_SHARED_LIBS:BOOL=OFF
+		-DINSTALL:BOOL=ON
+		-DPACKAGE:BOOL=OFF
+	)
+	cmake_src_configure
+}
