@@ -18,7 +18,7 @@ SRC_URI="
 	https://github.com/secondlife/3p-google-fonts/releases/download/v1.0.0-r6/google_fonts-1.0.0.24469773244-common-24469773244.tar.zst
 	https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-790015a/jpegencoderbasic-1.0-linux64-790015a.tar.zst
 	https://github.com/secondlife/llca/releases/download/v202407221723.0-a0fd5b9/llca-202407221423.0-common-10042698865.tar.zst
-	https://github.com/secondlife/lsl-definitions/releases/download/v0.6.12/lsl_definitions-0.6.12-common-29281156609.tar.zst
+	https://github.com/secondlife/lsl-definitions/releases/download/v0.7.0-game-control/lsl_definitions-0.7.0-game-control-common-36716452398.tar.zst
 	https://github.com/zeux/meshoptimizer/archive/refs/tags/v1.2.tar.gz -> meshoptimizer-1.2.tar.gz
 	https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-linux64-8756084692.tar.zst
 	https://github.com/secondlife/3p-open-libndofdev/releases/download/v1.14-r7/open_libndofdev-0.14.19022717849-linux64-19022717849.tar.zst
@@ -28,8 +28,8 @@ SRC_URI="
 	https://github.com/secondlife/3p-tinyexr/releases/download/v1.0.9-5e8947c/tinyexr-1.0.9-5e8947c-common-10475846787.tar.zst
 	https://github.com/secondlife/3p-tinygltf/releases/download/v2.9.3-r1/tinygltf-2.9.3-r1-common-10341018043.tar.zst
 	https://github.com/kmammou/v-hacd/archive/refs/tags/v4.1.0.tar.gz -> v-hacd-4.1.0.tar.gz
-	https://github.com/secondlife/3p-viewer-fonts/releases/download/v1.1.0-r2/viewer_fonts-1.0.0.25128287087-common-25128287087.tar.zst
-	https://github.com/secondlife/3p-webrtc-build/releases/download/m144.7559.06.19.hot-mic/webrtc-m144.7559.06.19.hot-mic.29761579711-linux64-29761579711.tar.zst
+	https://github.com/secondlife/3p-viewer-fonts/releases/download/v1.1.1-pre-r1/viewer_fonts-1.0.0.32996553300-common-32996553300.tar.zst
+	https://github.com/secondlife/3p-webrtc-build/releases/download/m144.7559.06.22/webrtc-m144.7559.06.22.38629291819-linux64-38629291819.tar.zst
 	https://github.com/secondlife/3p-websocketpp/releases/download/v0.8.2-r3/websocketpp-0.8.2.24525603568-common-24525603568.tar.zst
 "
 
